@@ -24,7 +24,23 @@
 
 /* 页头下边框线 */
 .layui-header{
-    border-bottom:1px solid #ddd;
+    background-color: #fff;
+}
+.layui-header::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(to right, #0077ff, #8f1dec);
+}
+.layui-header section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
 }
 /* 页头搜索框样式 */
 .component{
@@ -35,9 +51,7 @@
 }
 /* 页头logo图片样式 */
 .logo {
-    position: absolute;
-    left: 20px;
-    top: 16px;
+    display: inline-block;
     color:black;
 }
 .logo img {
@@ -80,12 +94,72 @@
     /*margin-top: 20px;*/
     /*margin-left: 20px;*/
     margin:10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0,0,0,.055);
+    transition: .5s;
+    overflow: hidden;
+    background-color: #fff;
+}
+.project-item:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #0077ff, #8f1dec);
+    pointer-events: none;
+}
+.project-item.private .layui-card-header a:after{
+    content: '私';
+    background: linear-gradient(135deg, #0077ff, #8f1dec);
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 10px;
+}
+.project-item.istop:after{
+    content: '置顶';
+    position: absolute;
+    background-color: rgba(255, 153, 0, 0.5);
+    color: #000;
+    font-size: 12px;
+    padding: 5px 0;
+    text-align: center;
+    width: 100px;
+    left: -33px;
+    bottom: 4px;
+    transform: rotate(45deg);
+}
+.project-item .layui-badge-rim{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
 }
 .project-item:hover{
-    box-shadow:4px 4px 5px #ddd;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.project-item:hover a.index-add-link{
+    transform: translate(0, 0);
+    opacity: 1;
+}
+.index-filter{
+    text-align: center;
+    padding: 0;
+}
+.index-filter .layui-row{
+    display: inline-block;
+    background-color: #fff;
+    padding: 10px 0 10px 10px;
+    border-radius: 0 0 8px 8px;
+}
+.index-filter .layui-inline{
+    margin: 0;
+}
+.index-filter .layui-input-inline{
+    border: solid 1px #ddd;
+    border-radius: 4px;
 }
 
 .project-desc{
@@ -95,7 +169,7 @@
 }
 
 .tooltip {
-	display: inline;
+	display: none;
 	/*position: relative;*/
 	z-index: 999;
 }
@@ -173,13 +247,24 @@
 }
 
 a.index-add-link{
-    color: #999;
-    float: right;
+    color: #fff;
     position: absolute;
     right: 10px;
+    bottom: 10px;
+    background: linear-gradient(135deg, #0077ff, #8f1dec);
+    border-radius: 50%;
+    box-shadow: -5px 2px 10px #0077ff31, 2px 2px 10px #8f1dec31;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(10px, 10px);
+    transition: 0.5s;
+    opacity: 0;
 }
 a.index-add-link:hover{
-    color: #333;
+    box-shadow: -8px 5px 18px #0077ff62, 5px 5px 18px #8f1dec62;
 }
 
 .layui-card{
@@ -196,6 +281,7 @@ a.index-add-link:hover{
 /* 文档浏览页 */
 body, html {
     height: 100%;
+    background-color: #f2f2f2;
 }
 .doc{
     display: -webkit-box;
@@ -501,7 +587,7 @@ input#doc-name,input#doctemp-name{
         background-color: #2176ff !important;
     }
     .layui-form-select dl dd.layui-this{
-        background-color: #2176ff !important;
+        background: linear-gradient(to right, #0077ff, #8f1dec) !important;
     }
     /* layui单选样式 */
     .layui-form-radio>i:hover, .layui-form-radioed>i{
@@ -515,7 +601,17 @@ input#doc-name,input#doctemp-name{
     border-color: #2176ff;
     background-color: #2176ff;
   }
-
+  .layui-form-select dl, .layui-panel{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  }
+  .layui-form-select dl{
+    padding: 2px !important;
+    border-radius: 4px;
+  }
+  .layui-form-select dl dd{
+    border-radius: 4px;
+    margin: 1px;
+  }
 /* 图标选择器 */
 .layui-iconpicker {max-width: 280px;}
 .layui-iconpicker{position:absolute;left:0;top:42px;padding:5px 0;z-index:899;min-width:100%;border:1px solid #d2d2d2;max-height:200px;overflow-y:auto;background-color:#fff;border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,.12);box-sizing:border-box;}
