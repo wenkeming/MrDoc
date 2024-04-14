@@ -1,3 +1,12 @@
+# The following are optimizations
+
+<img src="./media/2024-04-14_18-56.png" />
+
+- Optimize the homepage style.
+- The collection is displayed as a table of contents instead of an introduction by default.
+
+<hr />
+
 <h1 align="center">MrDoc - Writing documents, Gathering ideas</h1>
 
 <p align="center">Personal and small team notes, documents, knowledge management privatization deployment scheme</p>
